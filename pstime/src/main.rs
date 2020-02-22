@@ -1,0 +1,12 @@
+use std::process::Command;
+
+fn main() {
+    let ps_out = Command::new("/usr/bin/ps")
+                        .arg("-o")
+                        // Suppress header
+                        .arg("pid=,user=,etime=,cmd=")
+                        .output()
+                        .expect("Failed to execute /usr/bin/ps");
+
+    println!("{}", String::from_utf8_lossy(&ps_out.stdout));
+}
