@@ -1,7 +1,7 @@
 use std::process::Command;
 
 fn main() {
-    let ps_out = Command::new("/usr/bin/ps")
+    let ps_out = Command::new("ps")
                         .arg("-o")
                         // Suppress header
                         .arg("pid=,user=,etime=,cmd=")
