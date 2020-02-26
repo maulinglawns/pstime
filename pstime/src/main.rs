@@ -6,7 +6,7 @@ fn main() {
                         // Suppress header
                         .arg("pid=,user=,etime=,cmd=")
                         .output()
-                        .expect("Failed to execute /usr/bin/ps");
+                        .expect("Failed to execute ps");
 
     println!("{}", String::from_utf8_lossy(&ps_out.stdout));
 }
