@@ -35,7 +35,14 @@ fn main() {
                         .output()
                         .expect("Failed to execute ps");
 
-    println!("{}", String::from_utf8_lossy(&ps_out.stdout));
+    // If we don't get any output, we probably have a faulty PID
+    if String::from_utf8_lossy(&ps_out.stdout).is_empty() {
+        println!("Got nothing from PID {}, does the process exist?", pid);
+        exit(0);
+    }
+
+    let pstime = String::from_utf8_lossy(&ps_out.stdout);
+    println!("{}", pstime);
     //     ELAPSED   PID COMMAND
     //114-17:33:44    1 /sbin/init
 }
