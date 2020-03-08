@@ -43,6 +43,7 @@ fn main() {
 
     let pstime = String::from_utf8_lossy(&ps_out.stdout);
     println!("{}", pstime);
-    //Parse this:
-    //114-17:33:44    1 /sbin/init
+    //Parse etime:
+    //114-17:33:44
+    // See: https://gist.github.com/rust-play/2e6adc87b2cabc91cc4ea95c87cfdc64
 }
