@@ -1,7 +1,7 @@
 use std::process::{Command,exit};
 use std::env;
 
-static HELP: &str = "
+static HELPTEXT: &str = "
 Usage:
 pstime <PID> [-h]";
 
@@ -9,17 +9,15 @@ fn main() {
     // Get argument(s)
     let args: Vec<String> = env::args().collect();
 
-    // We require a PID, else exit
+    // We require an argument, else exit
     if args.len() < 2 {
         println!("No argument given.");
         exit(1)
     }
 
-    let helparg = String::from("-h");
-
     // If arg is '-h', show help
-    if args.contains(&helparg) {
-        println!("{}", HELP);
+    if args.contains(&String::from("-h")) {
+        println!("{}", HELPTEXT);
         exit(0);
     }
 
