@@ -1,7 +1,9 @@
 use std::process::{Command,exit};
 use std::env;
 
-static HELP: &str = "helptext";
+static HELP: &str = "
+Usage:
+pstime <PID> [-h]";
 
 fn main() {
     // Get argument(s)
@@ -43,6 +45,6 @@ fn main() {
 
     let pstime = String::from_utf8_lossy(&ps_out.stdout);
     println!("{}", pstime);
-    //     ELAPSED   PID COMMAND
+    //Parse this:
     //114-17:33:44    1 /sbin/init
 }
