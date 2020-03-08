@@ -36,4 +36,6 @@ fn main() {
                         .expect("Failed to execute ps");
 
     println!("{}", String::from_utf8_lossy(&ps_out.stdout));
+    //     ELAPSED   PID COMMAND
+    //114-17:33:44    1 /sbin/init
 }
