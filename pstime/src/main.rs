@@ -46,13 +46,20 @@ fn main() {
     //println!("{:?}", &ps_out.stdout);
 
     let pstime = String::from_utf8_lossy(&ps_out.stdout);
+    //////////////let pstime = String::from("114-17:33:44");
     let timevec: Vec<&str> = pstime
         .trim()
         .split(|char| char == '-' || char == ':').collect(); 
 
-    // Get number of elements
-    let timevec_len = timevec.len();
-    println!("{}", timevec_len);
+    match timevec.len() {
+        1 => println!("{} seconds", timevec[0]),
+        2 => println!("{} minutes, {} seconds", timevec[0], timevec[1]),
+        3 => println!("{} hours, {} minutes, {} seconds", 
+                      timevec[0], timevec[1], timevec[2]),
+        _ => println!("{} days, {} hours, {} minutes, {} seconds", 
+                      timevec[0], timevec[1], timevec[2], timevec[3]),
+    }
+    //println!("{}", timevec_len);
     println!("{}", pstime);
     println!("{:?}", timevec);
     //Parse etime:
