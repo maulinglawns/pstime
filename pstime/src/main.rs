@@ -41,8 +41,15 @@ fn main() {
         exit(0);
     }
 
+
+    //let timevec: Vec<String> = String::from_utf8_lossy(&ps_out.stdout);
+    //println!("{:?}", &ps_out.stdout);
+
     let pstime = String::from_utf8_lossy(&ps_out.stdout);
+    let timevec: Vec<&str> = pstime
+        .split(|char| char == '-' || char == ':').collect(); 
     println!("{}", pstime);
+    println!("{:?}", timevec);
     //Parse etime:
     //114-17:33:44
     // See: https://gist.github.com/rust-play/2e6adc87b2cabc91cc4ea95c87cfdc64
