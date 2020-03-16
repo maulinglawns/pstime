@@ -47,7 +47,12 @@ fn main() {
 
     let pstime = String::from_utf8_lossy(&ps_out.stdout);
     let timevec: Vec<&str> = pstime
+        .trim()
         .split(|char| char == '-' || char == ':').collect(); 
+
+    // Get number of elements
+    let timevec_len = timevec.len();
+    println!("{}", timevec_len);
     println!("{}", pstime);
     println!("{:?}", timevec);
     //Parse etime:
