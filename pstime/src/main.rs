@@ -46,11 +46,14 @@ fn main() {
     //println!("{:?}", &ps_out.stdout);
 
     let pstime = String::from_utf8_lossy(&ps_out.stdout);
-    //////////////let pstime = String::from("114-17:33:44");
+    //let pstime = String::from("114-17:33:44");
     let timevec: Vec<&str> = pstime
         .trim()
         .split(|char| char == '-' || char == ':').collect(); 
 
+    // Instead of this clumsy match. Use two vecs:
+    // One with "days", "hours", "minutes", "seconds"
+    // Then iterate over above and timevec and print.
     match timevec.len() {
         1 => println!("{} seconds", timevec[0]),
         2 => println!("{} minutes, {} seconds", timevec[0], timevec[1]),
