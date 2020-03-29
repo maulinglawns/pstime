@@ -1,17 +1,15 @@
 use std::process::{Command,exit};
 use std::env;
 
-static HELPTEXT: &str = "
-Usage:
-pstime <PID> [-h]";
+static HELPTEXT: &str = "Usage:\npstime <PID> [-h]";
 
 fn main() {
     // Get argument(s)
     let args: Vec<String> = env::args().collect();
 
     // We require an argument, else exit
-    if args.len() < 2 {
-        println!("No argument given.");
+    if args.len() < 2 || args.len() > 2 {
+        println!("Expected exactly one argument.\n{}", HELPTEXT);
         exit(1)
     }
 
@@ -37,16 +35,13 @@ fn main() {
 
     // If we don't get any output, we probably have a faulty PID
     if String::from_utf8_lossy(&ps_out.stdout).is_empty() {
-        println!("Got nothing from PID {}, does the process exist?", pid);
+        println!("Got nothing from PID {}, nonexistent process?", pid);
         exit(0);
     }
 
-
-    //let timevec: Vec<String> = String::from_utf8_lossy(&ps_out.stdout);
-    //println!("{:?}", &ps_out.stdout);
-
     let pstime = String::from_utf8_lossy(&ps_out.stdout);
-    //let pstime = String::from("114-17:33:44");
+
+    // Convert str to vec
     let timevec: Vec<&str> = pstime
         .trim()
         .split(|char| char == '-' || char == ':').collect(); 
