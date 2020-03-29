@@ -51,9 +51,6 @@ fn main() {
         .trim()
         .split(|char| char == '-' || char == ':').collect(); 
 
-    // Instead of this clumsy match. Use two vecs:
-    // One with "days", "hours", "minutes", "seconds"
-    // Then iterate over above and timevec and print.
     match timevec.len() {
         1 => println!("{} seconds", timevec[0]),
         2 => println!("{} minutes, {} seconds", timevec[0], timevec[1]),
@@ -62,10 +59,4 @@ fn main() {
         _ => println!("{} days, {} hours, {} minutes, {} seconds", 
                       timevec[0], timevec[1], timevec[2], timevec[3]),
     }
-    //println!("{}", timevec_len);
-    println!("{}", pstime);
-    println!("{:?}", timevec);
-    //Parse etime:
-    //114-17:33:44
-    // See: https://gist.github.com/rust-play/2e6adc87b2cabc91cc4ea95c87cfdc64
 }
