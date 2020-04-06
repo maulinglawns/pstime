@@ -36,7 +36,7 @@ fn main() {
     // If we don't get any output, we probably have a faulty PID
     if String::from_utf8_lossy(&ps_out.stdout).is_empty() {
         println!("Got nothing from PID {}, nonexistent process?", pid);
-        exit(0);
+        exit(1);
     }
 
     let pstime = String::from_utf8_lossy(&ps_out.stdout);
